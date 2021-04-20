@@ -1,0 +1,7 @@
+{
+    "remote_url": "192.168.255.175",
+    "remote_user": "pi",
+    "remote_pwd": "",
+    "remote_base_dir": "/home/pi/work",
+    "target_framework": "net5.0"
+}

@@ -1,0 +1,5 @@
+option confirm off
+option batch continue
+open sftp://%1%:%2%@%3%
+synchronize remote -criteria=time %4% %5%
+exit

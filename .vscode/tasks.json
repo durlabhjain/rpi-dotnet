@@ -1,0 +1,87 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "${workspaceFolder}/${workspaceFolderBasename}.csproj",
+                // Ask dotnet build to generate full paths for file names.
+                "/property:GenerateFullPaths=true",
+                // Do not generate summary otherwise it leads to duplicate errors in Problems panel
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "dotnetPublish",
+            "command": "dotnet",
+            "type": "process",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "showReuseMessage": false,
+                "echo": false,
+                "clear": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "args": [
+                "publish",
+                "${workspaceFolder}/${workspaceFolderBasename}.csproj",
+                "-r",
+                "linux-arm"
+            ]
+        },
+        {
+            "label": "winscp",
+            "type": "shell",
+            "options": {
+                "cwd":"${workspaceFolder}"
+            },
+            "windows":{
+                "command": "winscp",
+                "args": [
+                    "-script=winscp.txt",
+                    "-parameter",
+                    "${config:remote_user}",
+                    "${config:remote_pwd}",
+                    "${config:remote_url}",
+                    "${workspaceFolder}\\bin\\Debug\\${config:target_framework}\\linux-arm\\publish",
+                    "${config:remote_base_dir}/${workspaceFolderBasename}"
+                ]
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "showReuseMessage": false,
+                "echo": false
+            },
+        },
+        {
+            "label": "PublishAndDeploy",
+            "type": "shell",
+            "windows":{
+                "command": "echo",
+                "args": ["'Done'"]
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "showReuseMessage": false,
+                "echo": false
+            },
+            "dependsOrder": "sequence",
+            "dependsOn":["dotnetPublish", "winscp"]
+        }
+    ]
+}
