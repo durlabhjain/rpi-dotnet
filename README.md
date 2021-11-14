@@ -3,7 +3,7 @@
 ## Overview
 
 * Currently remote development is not supported on Raspberry Pi. Hence, the development must be done on local machine, files should be copied on remote desktop and then we can debug remotely
-* The project includes sample setup to ease the envrionment setup
+* The project includes sample setup to ease the environment setup
 
 ## Getting started
 
@@ -17,6 +17,8 @@
 ### Remote (Raspberry Pi)
 
 * Install .NET SDK. For example, follow instructions from https://www.petecodes.co.uk/install-and-use-microsoft-dot-net-5-with-the-raspberry-pi/
+
+Note: The given link is for .NET5 SDK , if you are using different version make sure to install the right SDK 
 ```
 wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/install.sh | sudo bash
 ```
