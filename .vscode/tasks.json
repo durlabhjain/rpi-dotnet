@@ -39,7 +39,7 @@
                 "publish",
                 "${workspaceFolder}/${workspaceFolderBasename}.csproj",
                 "-r",
-                "linux-arm"
+                "${config:architecture}"
             ]
         },
         {
@@ -56,7 +56,7 @@
                     "${config:remote_user}",
                     "${config:remote_pwd}",
                     "${config:remote_url}",
-                    "${workspaceFolder}\\bin\\Debug\\${config:target_framework}\\linux-arm\\publish",
+                    "${workspaceFolder}\\bin\\Debug\\${config:target_framework}\\${config:architecture}\\publish",
                     "${config:remote_base_dir}/${workspaceFolderBasename}"
                 ]
             },

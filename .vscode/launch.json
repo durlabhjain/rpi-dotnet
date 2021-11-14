@@ -29,7 +29,7 @@
             "stopAtEntry": false,
             "pipeTransport": {
                 "pipeCwd": "${workspaceFolder}",
-                "pipeProgram": "plink.exe",
+                "pipeProgram": "plink.exe", // use exact path if command not found "C:\\Program Files\\PuTTY\\PLINK.EXE"
                 "pipeArgs": [
                     "-pw",
                     "${config:remote_pwd}",
